@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='UTF8'>
+  
+  <title>Result Data</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <style>
+  * { 
+    margin: 0; 
+    padding: 0; 
+  }
+  body { 
+    font: 14px/1.4 Palatino, Serif; 
+  }
+  
+  /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid #9B9B9B; 
+    text-align: left; 
+  }
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+    table, thead, tbody, th, td, tr { display: block; }
+    thead tr { position: absolute;top: -9999px;left: -9999px;}
+    tr { border: 1px solid #9B9B9B; }
+    td { border: none;border-bottom: 1px solid #9B9B9B; position: relative;padding-left: 50%; }
+    
+    td:before { position: absolute;top: 6px;left: 6px;width: 45%; padding-right: 10px; white-space: nowrap;}
+    
+    /*
+    Label the data
+    */
+td:nth-of-type(1):before { content: "TEAM_1_LOCATION"; }
+td:nth-of-type(2):before { content: "TEAM_1_NAME"; }
+td:nth-of-type(3):before { content: "TEAM_2_LOCATION"; }
+td:nth-of-type(4):before { content: "TEAM_2_NAME"; }
+td:nth-of-type(5):before { content: "BALLPARK_NAME"; }
+  }
+  
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px) {
+    body { 
+      padding: 0; 
+      margin: 0; 
+      width: 320px; }
+    }
+  
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    body { 
+      width: 495px; 
+    }
+  }
+  
+  </style>
+  <!--<![endif]-->
+<script type="text/javascript">
+
+function search(){
+  
+  var s = document.getElementById('search').value;
+
+  rows = document.getElementById('data').getElementsByTagName('TR');
+  for(var i=0;i<rows.length;i++){
+    if ( rows[i].textContent.indexOf(s)>0  || s.length==0 ) {
+	  rows[i].style.display ='';
+    } else {
+      rows[i].style.display ='none';
+    }
+  }
+}
+
+
+var timer;
+function delayedSearch() {
+	clearTimeout(timer);
+	console.log('delay-ing')
+    timer = setTimeout(function () {
+		console.log('delay-running')
+		search();
+    }, 500);
+  }</script>
+</head>
+
+<body>
+<div><input type="text" size="30" maxlength="1000" value="" id="search" onkeyup="delayedSearch();" /><input type="button" value="Go" onclick="lsearch();"/> </div>
+<table><thead><tr>	<th>TEAM_1_LOCATION</th>
+	<th>TEAM_1_NAME</th>
+	<th>TEAM_2_LOCATION</th>
+	<th>TEAM_2_NAME</th>
+	<th>BALLPARK_NAME</th>
+</tr></thead>
+<tbody id="data">
+
+	<tr>
+<td>New York</td>
+<td>Yankees</td>
+<td>Boston</td>
+<td>Red Sox</td>
+<td>Yankee Stadium</td>
+	</tr>
+	<tr>
+<td>Baltimore</td>
+<td>Orioles</td>
+<td>Washington</td>
+<td>Nationals</td>
+<td>Oriole Park at Camden Yards</td>
+	</tr>
+	<tr>
+<td>Chicago</td>
+<td>White Sox</td>
+<td>Chicago</td>
+<td>Cubs</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td>Kansas City</td>
+<td>Royals</td>
+<td>St. Louis</td>
+<td>Cardinals</td>
+<td>Busch Stadium</td>
+	</tr>
+	<tr>
+<td>Los Angeles</td>
+<td>Angels</td>
+<td>Los Angeles</td>
+<td>Dodgers</td>
+<td>Angel Stadium</td>
+	</tr>
+	<tr>
+<td>Los Angeles</td>
+<td>Angels</td>
+<td>Los Angeles</td>
+<td>Dodgers</td>
+<td>Dodger Stadium</td>
+	</tr>
+	<tr>
+<td>Texas</td>
+<td>Rangers</td>
+<td>Houston</td>
+<td>Astros</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td>Oakland</td>
+<td>Athletics</td>
+<td>San Francisco</td>
+<td>Giants</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td>New York</td>
+<td>Mets</td>
+<td>Atlanta</td>
+<td>Braves</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td>New York</td>
+<td>Mets</td>
+<td>New York</td>
+<td>Yankees</td>
+<td>Yankee Stadium</td>
+	</tr>
+	<tr>
+<td>New York</td>
+<td>Mets</td>
+<td>Philadelphia</td>
+<td>Phillies</td>
+<td>Citizens Bank Park</td>
+	</tr>
+	<tr>
+<td>Miami</td>
+<td>Marlins</td>
+<td>Atlanta</td>
+<td>Braves</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td>Miami</td>
+<td>Marlins</td>
+<td>Tampa Bay</td>
+<td>Rays</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td>Chicago</td>
+<td>Cubs</td>
+<td>Milwaukee</td>
+<td>Brewers</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td>Chicago</td>
+<td>Cubs</td>
+<td>St. Louis</td>
+<td>Cardinals</td>
+<td>Busch Stadium</td>
+	</tr>
+	<tr>
+<td>Cincinnati</td>
+<td>Reds</td>
+<td>Cleveland</td>
+<td>Indians</td>
+<td>Great American Ball Park</td>
+	</tr>
+	<tr>
+<td>Los Angeles</td>
+<td>Dodgers</td>
+<td>San Francisco</td>
+<td>Giants</td>
+<td>Dodger Stadium</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Fenway Park</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Tropicana Field</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Guaranteed Rate Field</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Kauffman Stadium</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Progressive Field</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Minute Maid Park</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Globe Life Field</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Oakland Coliseum</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Citi Field</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>LoanDepot Part</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Nationals Park</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Truist Park</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>American Family Field</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Wrigley Field</td>
+	</tr>
+	<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Oracle Park</td>
+	</tr>
+</tbody></table><!-- SQL:
+SELECT /*+ no_parallel("XQUERY6") */  * FROM "901SELIGMANJ"."XQUERY6"--></body></html>

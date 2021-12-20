@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='UTF8'>
+  
+  <title>Result Data</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <style>
+  * { 
+    margin: 0; 
+    padding: 0; 
+  }
+  body { 
+    font: 14px/1.4 Palatino, Serif; 
+  }
+  
+  /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid #9B9B9B; 
+    text-align: left; 
+  }
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+    table, thead, tbody, th, td, tr { display: block; }
+    thead tr { position: absolute;top: -9999px;left: -9999px;}
+    tr { border: 1px solid #9B9B9B; }
+    td { border: none;border-bottom: 1px solid #9B9B9B; position: relative;padding-left: 50%; }
+    
+    td:before { position: absolute;top: 6px;left: 6px;width: 45%; padding-right: 10px; white-space: nowrap;}
+    
+    /*
+    Label the data
+    */
+td:nth-of-type(1):before { content: "PLAYER_NAME"; }
+td:nth-of-type(2):before { content: "TEAM_ABBR"; }
+td:nth-of-type(3):before { content: "START_YEAR"; }
+td:nth-of-type(4):before { content: "END_YEAR"; }
+  }
+  
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px) {
+    body { 
+      padding: 0; 
+      margin: 0; 
+      width: 320px; }
+    }
+  
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    body { 
+      width: 495px; 
+    }
+  }
+  
+  </style>
+  <!--<![endif]-->
+<script type="text/javascript">
+
+function search(){
+  
+  var s = document.getElementById('search').value;
+
+  rows = document.getElementById('data').getElementsByTagName('TR');
+  for(var i=0;i<rows.length;i++){
+    if ( rows[i].textContent.indexOf(s)>0  || s.length==0 ) {
+	  rows[i].style.display ='';
+    } else {
+      rows[i].style.display ='none';
+    }
+  }
+}
+
+
+var timer;
+function delayedSearch() {
+	clearTimeout(timer);
+	console.log('delay-ing')
+    timer = setTimeout(function () {
+		console.log('delay-running')
+		search();
+    }, 500);
+  }</script>
+</head>
+
+<body>
+<div><input type="text" size="30" maxlength="1000" value="" id="search" onkeyup="delayedSearch();" /><input type="button" value="Go" onclick="lsearch();"/> </div>
+<table><thead><tr>	<th>PLAYER_NAME</th>
+	<th>TEAM_ABBR</th>
+	<th>START_YEAR</th>
+	<th>END_YEAR</th>
+</tr></thead>
+<tbody id="data">
+
+	<tr>
+<td>Robinson Cano</td>
+<td>NYM</td>
+<td align="right">2018</td>
+<td align="right">2020</td>
+	</tr>
+	<tr>
+<td>Aroldis Chapman</td>
+<td>NYY</td>
+<td align="right">2016</td>
+<td align="right">2016</td>
+	</tr>
+	<tr>
+<td>Corey Kluber</td>
+<td>NYY</td>
+<td align="right">2021</td>
+<td align="right">2021</td>
+	</tr>
+	<tr>
+<td>Giancarlo Stanton</td>
+<td>NYY</td>
+<td align="right">2018</td>
+<td align="right">2021</td>
+	</tr>
+</tbody></table><!-- SQL:
+SELECT /*+ no_parallel("XQUERY3") */  ROWID "ROWID", PLAYER_NAME PLAYER_NAME, TEAM_ABBR TEAM_ABBR, START_YEAR START_YEAR, END_YEAR END_YEAR FROM "901SELIGMANJ"."XQUERY3"--></body></html>
